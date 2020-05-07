@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Logs</title>
+</head>
+<body>
+    <h1>Geo-Tag</h1>
+
+    <script>
+        let data=[];
+        getData();
+
+        async function getData(){
+            const response = await fetch('/api');
+            data = await response.json();
+            console.log(data)
+
+            for(i=0;i<5;i++){
+                const container = document.createElement('div');
+                const geo = document.createElement('div');
+                const comment = document.createElement('div');
+                const date = document.createElement('div');
+                const dateString = new Date(data[i].timestamp).toLocaleString();
+                
+                geo.textContent=`${data[i].lat},${data[i].lon}`;
+                comment.textContent=`${data[i].message}`;
+                date.textContent=`${dateString}`;
+
+                container.append(comment, geo, date);
+                document.body.append(container);  
+            }
+        }
+    </script>
+</body>
+</html>

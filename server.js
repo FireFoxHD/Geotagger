@@ -21,3 +21,9 @@ app.post('/api',(request, response)=>{
     console.log("sending response");
 });
 
+app.get('/api',(request, response)=>{
+    database.find({},(error, data)=>{
+        response.json(data);
+    })
+});
+

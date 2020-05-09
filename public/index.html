@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
+    
     <script defer src="app.js"></script>
     <title>Geo-Tag</title>
 </head>
 <body>
     <h1>Geo-Tag</h1>
+
+    <a href="logs.html">View Logs</a>
+
     <p>
         Latitude:&nbsp;<span id="lat"></span><br/>
         Longitude:&nbsp;<span id="lon"></span><br/>
         <div class="send-data">
-            <input id="comment" type="text" placeholder="Leave a comment"/>
-            <input id="send" type="button" value="Send"/>
+            <input id="comment" type="text" placeholder="Leave a comment" maxlength="50" autocomplete="off"/>
+            <input id="send" type="button" value="Send"/><span id="error"></span>
         </div>
-        <p id="message"></p>
-        <a href="logs.html">View Logs</a>
+        
+        <embed id="icon" class="no-display" src="check.svg" height="50px" width="50px">
     </p>
 </body>
 </html>

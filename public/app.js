@@ -1,15 +1,19 @@
 const sendButton = document.getElementById("send");
-const comment = document.getElementById("comment");
-const msgBox = document.getElementById("message");
+const commentBox = document.getElementById("comment");
+const errorMsg = document.getElementById("error");
+const icon = document.getElementById("icon");
+sendButton.disabled=true;
 
-comment.addEventListener("input", ()=>{
+commentBox.addEventListener("input", ()=>{
     
-    if(comment.value.length<1 || comment.value==" "){
+    msgLength = commentBox.value.trim().length;
+    
+    if(msgLength<1){
         sendButton.disabled=true;
-        msgBox.textContent="Please Enter a value";
+        errorMsg.textContent="Please Enter a value";
     }else{
         sendButton.disabled=false;
-        msgBox.textContent="";
+        errorMsg.textContent="";
     }
 })
 
@@ -34,11 +38,18 @@ navigator.geolocation.getCurrentPosition((position)=>{
 }, error=>console.log(`There was an error ${error}`));
 
 
+commentBox.addEventListener("focus", ()=>{
+    icon.classList.remove("icon-success");
+    icon.classList.add("no-display");
+});
 
-document.getElementById("send").addEventListener("click", async ()=>{
-    const message = comment.value;
+sendButton.addEventListener("click", async ()=>{
+    icon.classList.remove("no-display");
+    icon.classList.add("icon-success");
+    let message = commentBox.value.trim();
     data = {lat, lon, message};
-    console.log(data);
+    commentBox.value="";
+    console.log("Sending: "+ data);
     const options = {
         method: 'POST',
         headers: {"Content-type": "application/json"},

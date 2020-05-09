@@ -9,12 +9,30 @@ body{
 }
 .send-data{
     display: flex;
+    margin: 10px;
 }
 
 #comment{
     padding: 5px;
 }
 
-#message{
+#error{
     color: red;
+}
+
+.container{
+    width: 20%;
+    height: 10%;
+    background-color: lightgrey;
+    margin: 5px;
+    padding: 10px;
+}
+
+.no-display{
+    display: none;
+}
+
+#mapid{
+    height: 70vh;
+    width: 70vw;
 }

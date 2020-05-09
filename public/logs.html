@@ -4,35 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <title>Logs</title>
 </head>
 <body>
     <h1>Geo-Tag</h1>
 
-    <script>
-        let data=[];
-        getData();
+    <center>
+        <div id="mapid"></div>
+    </center>
 
+
+    <script>
+         
+        let markerArray=[];
+        let popupArray=[];
+        const mymap = L.map('mapid').setView([0, 0], 1);
+        const attribution ='&copy;<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        const tiles = L.tileLayer(tileUrl, { attribution });
+        tiles.addTo(mymap);
+        
+        //marker.setLatLng([data.lat, data.lon]);
+        //const popupArray = markerArray[i].bindPopup('<b>Hello world!</b><br/>I am a popup.');
+        //popup.openPopup();
+        getData();
         async function getData(){
             const response = await fetch('/api');
-            data = await response.json();
-            console.log(data)
-
-            for(i=0;i<5;i++){
-                const container = document.createElement('div');
-                const geo = document.createElement('div');
-                const comment = document.createElement('div');
-                const date = document.createElement('div');
-                const dateString = new Date(data[i].timestamp).toLocaleString();
-                
-                geo.textContent=`${data[i].lat},${data[i].lon}`;
-                comment.textContent=`${data[i].message}`;
-                date.textContent=`${dateString}`;
-
-                container.append(comment, geo, date);
-                document.body.append(container);  
+            const data = await response.json();
+            for(let i = 0; i<data.length; i++){
+                console.log(data[i].lat, data[i].lon);
+                markerArray[i] = L.marker([data[i].lat,data[i].lon ],{}).addTo(mymap);
+                popupArray[i] = markerArray[i].bindPopup(`${data[i].message}`);
+                popupArray[i].openPopup();
             }
+            
+            
         }
+
     </script>
 </body>
 </html>

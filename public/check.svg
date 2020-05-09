@@ -1,0 +1,32 @@
+<svg width="363" height="363" viewBox="0 0 363 363" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+    <style>        
+        svg>circle{
+            stroke-dasharray: 1078;
+            stroke-dashoffset: 1078;
+            animation: stroke-animation 0.3s ease-in both;
+        }
+        
+        svg>path{
+            animation: tick 0.3s ease-in both 0.2s;
+        }
+        
+        @keyframes stroke-animation{
+            to{
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        @keyframes tick{
+            to{
+                fill:#2AE219;
+            }
+        }
+    </style>
+</defs>
+
+
+<circle cx="180" cy="180" r="165" stroke="black" stroke-opacity="0.5" stroke-width="20" stroke-linecap="round"/>
+<path stroke-width="20" d="M95.0711 178.929C91.1658 175.024 84.8342 175.024 80.9289 178.929C77.0237 182.834 77.0237 189.166 80.9289 193.071L95.0711 178.929ZM147 245L139.929 252.071C143.834 255.976 150.166 255.976 154.071 252.071L147 245ZM281.071 125.071C284.976 121.166 284.976 114.834 281.071 110.929C277.166 107.024 270.834 107.024 266.929 110.929L281.071 125.071ZM80.9289 193.071L139.929 252.071L154.071 237.929L95.0711 178.929L80.9289 193.071ZM154.071 252.071L217.571 188.571L203.429 174.429L139.929 237.929L154.071 252.071ZM217.571 188.571L281.071 125.071L266.929 110.929L203.429 174.429L217.571 188.571Z" fill="transparent"/>
+</svg>

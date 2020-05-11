@@ -1,12 +1,11 @@
- <center> # Geotagger </center>
+# Geotagger
 A simple application that uses the geo-location web API to plot location kn a map with a message popup
 
 Technologies used :
-
-Node.js
-express
-Geolocation web API
+Node.js,
+express,
+Geolocation web API and
 leaflet API
 
 
-App was made for the purpose of learning backend development
+ This app was made for the purpose of learning backend development.

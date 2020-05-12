@@ -2,37 +2,73 @@
 
 body{
     font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0;
+}
+
+#mapid{
+    margin: 30px;
+    height: 70vh;
+    width: 85vw;
+}
+
+h1{
+    background-color: #edf060ff;
+    color: #171219ff;
+    padding: 20px;
+    margin: 0;
+}
+
+.container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #171219ff;
+    color: white;
+    align-self: stretch;
+    padding: 40px;
+    height: 70vh;
+    
 }
+
+.location{
+    text-align: center;
+    padding: 20px;
+    height: 40vh;
+    background-color: #225560ff;
+}
+
 .send-data{
+    margin: 15px;
     display: flex;
-    margin: 10px;
 }
 
-#comment{
-    padding: 5px;
-}
-
-#error{
-    color: red;
-}
-
-.container{
-    width: 20%;
-    height: 10%;
-    background-color: lightgrey;
-    margin: 5px;
+input#comment{
     padding: 10px;
+
+}
+
+.map-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#edf060ff;
 }
 
 .no-display{
     display: none;
 }
 
-#mapid{
-    height: 70vh;
-    width: 70vw;
+.feedback{
+    font-size: 1.1rem; 
+}
+
+.success{
+    color: #edf060ff; 
+}
+
+.error{
+    color: rgb(224, 84, 84);
 }
